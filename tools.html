@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cybersecurity Tools | Security Toolkit</title>
+
+    <meta
+        name="description"
+        content="Practical browser-based cybersecurity tools for domain analysis, DNS, email security, URL analysis, hashing, IP analysis and SOC log analysis."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            Cybersecurity Portfolio
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="projects.html">Projects</a>
+
+            <a href="tools.html">Tools</a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            CYBERSECURITY TOOLS
+        </p>
+
+        <h1>
+            Practical
+            <br>
+            Security Toolkit.
+        </h1>
+
+        <p class="hero-text">
+            Browser-based tools for learning, analysis
+            and cybersecurity investigation.
+        </p>
+
+    </section>
+
+
+    <section class="highlights">
+
+
+        <!-- PASSWORD -->
+
+        <div class="card">
+
+            <h2>🔐 Password Strength</h2>
+
+            <p>
+                Evaluate basic password strength using
+                length, character variety and complexity.
+            </p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+            <button
+                type="button"
+                onclick="checkPassword()"
+            >
+                Check Password
+            </button>
+
+            <p id="result"></p>
+
+        </div>
+
+
+        <!-- DOMAIN -->
+
+        <div class="card">
+
+            <h2>🌍 Domain Analyzer</h2>
+
+            <p>
+                Analyze a domain and retrieve public DNS
+                information.
+            </p>
+
+            <input
+                type="text"
+                id="domainInput"
+                placeholder="example.com"
+            >
+
+            <button
+                type="button"
+                onclick="analyzeDomain()"
+            >
+                Analyze Domain
+            </button>
+
+            <div id="domainResult"></div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="card">
+
+            <h2>📧 Email Security</h2>
+
+            <p>
+                Validate an email format and inspect its
+                domain mail configuration.
+            </p>
+
+            <input
+                type="email"
+                id="emailInput"
+                placeholder="user@example.com"
+            >
+
+            <button
+                type="button"
+                onclick="checkEmailSecurity()"
+            >
+                Check Email
+            </button>
+
+            <div id="emailResult"></div>
+
+        </div>
+
+
+        <!-- URL -->
+
+        <div class="card">
+
+            <h2>🔗 URL Analyzer</h2>
+
+            <p>
+                Inspect URL structure and identify basic
+                security characteristics.
+            </p>
+
+            <input
+                type="text"
+                id="urlAnalyzerInput"
+                placeholder="https://example.com/login"
+            >
+
+            <button
+                type="button"
+                onclick="analyzeURL()"
+            >
+                Analyze URL
+            </button>
+
+            <div id="urlAnalyzerResult"></div>
+
+        </div>
+
+
+        <!-- HASH IDENTIFIER -->
+
+        <div class="card">
+
+            <h2>🔢 Hash Identifier</h2>
+
+            <p>
+                Identify possible common hash formats based
+                on length and hexadecimal patterns.
+            </p>
+
+            <input
+                type="text"
+                id="hashInput"
+                placeholder="Enter hash"
+            >
+
+            <button
+                type="button"
+                onclick="identifyHash()"
+            >
+                Identify Hash
+            </button>
+
+            <div id="hashResult"></div>
+
+        </div>
+
+
+        <!-- HASH GENERATOR -->
+
+        <div class="card">
+
+            <h2>🔐 Hash Generator</h2>
+
+            <p>
+                Generate cryptographic hashes locally
+                using the browser Web Crypto API.
+            </p>
+
+            <input
+                type="text"
+                id="hashTextInput"
+                placeholder="Enter text"
+            >
+
+            <button
+                type="button"
+                onclick="generateHash('SHA-256')"
+            >
+                SHA-256
+            </button>
+
+            <button
+                type="button"
+                onclick="generateHash('SHA-384')"
+            >
+                SHA-384
+            </button>
+
+            <button
+                type="button"
+                onclick="generateHash('SHA-512')"
+            >
+                SHA-512
+            </button>
+
+            <div id="hashGenerateResult"></div>
+
+        </div>
+
+
+        <!-- IP -->
+
+        <div class="card">
+
+            <h2>🌐 IP Intelligence</h2>
+
+            <p>
+                Analyze IPv4 and IPv6 addresses and
+                basic network information.
+            </p>
+
+            <input
+                type="text"
+                id="ipInput"
+                placeholder="192.168.1.10 or IPv6"
+            >
+
+            <input
+                type="number"
+                id="cidrInput"
+                placeholder="CIDR"
+                min="0"
+                max="128"
+            >
+
+            <button
+                type="button"
+                onclick="analyzeIP()"
+            >
+                Analyze IP
+            </button>
+
+            <div id="ipResult"></div>
+
+        </div>
+
+
+        <!-- SOC -->
+
+        <div class="card">
+
+            <h2>🧪 SOC Log Analyzer</h2>
+
+            <p>
+                Analyze authentication logs, extract
+                indicators and identify possible suspicious
+                activity.
+            </p>
+
+            <input
+                type="file"
+                id="logFile"
+                accept=".log,.txt"
+                onchange="loadLogFile()"
+            >
+
+            <textarea
+                id="logInput"
+                rows="8"
+                placeholder="Paste security logs here..."
+            ></textarea>
+
+            <button
+                type="button"
+                onclick="analyzeLog()"
+            >
+                Analyze Log
+            </button>
+
+            <div id="logResult"></div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Cybersecurity Portfolio
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

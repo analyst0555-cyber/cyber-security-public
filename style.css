@@ -1,0 +1,402 @@
+/* ================================
+   GLOBAL
+   ================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1220;
+    color: #eaf2ff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ================================
+   HEADER
+   ================================ */
+
+header {
+    width: 100%;
+    border-bottom: 1px solid #26364d;
+    background: #101a2b;
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1f7ff;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 26px;
+}
+
+.nav-links a {
+    color: #b8c7da;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #60a5fa;
+}
+
+
+/* ================================
+   MAIN
+   ================================ */
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+
+/* ================================
+   HERO
+   ================================ */
+
+.hero {
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 850px;
+}
+
+.eyebrow {
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+    color: #f4f8ff;
+}
+
+.hero-text {
+    max-width: 680px;
+    color: #a9bad0;
+    font-size: 19px;
+    margin-bottom: 34px;
+}
+
+
+/* ================================
+   BUTTONS
+   ================================ */
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    border: 1px solid #38bdf8;
+    border-radius: 7px;
+
+    color: #7dd3fc;
+
+    font-weight: bold;
+
+    background: #101c30;
+
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #38bdf8;
+    color: #07101d;
+}
+
+.button.secondary {
+    border-color: #40536d;
+    color: #d5e2f1;
+    background: #121d30;
+}
+
+.button.secondary:hover {
+    background: #243550;
+    color: #ffffff;
+}
+
+
+/* ================================
+   HIGHLIGHTS / CARDS
+   ================================ */
+
+.highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+
+    padding: 40px 0 80px;
+}
+
+.card {
+    background: linear-gradient(
+        145deg,
+        #142238,
+        #0f192b
+    );
+
+    border: 1px solid #2a405e;
+    border-radius: 10px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #f1f7ff;
+}
+
+.card h3 {
+    color: #dcecff;
+}
+
+.card p {
+    color: #a9bad0;
+    font-size: 14px;
+}
+
+
+/* ================================
+   TOOL CONTROLS
+   ================================ */
+
+.card input,
+.card textarea {
+    width: 100%;
+    margin-top: 12px;
+    padding: 11px 12px;
+
+    background: #0a1424;
+    color: #edf6ff;
+
+    border: 1px solid #334a67;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.card textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.card input:focus,
+.card textarea:focus {
+    outline: none;
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 0 0 2px rgba(56, 189, 248, 0.12);
+}
+
+
+/* ================================
+   TOOL BUTTONS
+   ================================ */
+
+.card button {
+    margin-top: 12px;
+    margin-right: 6px;
+
+    padding: 10px 15px;
+
+    background: #17263d;
+    color: #7dd3fc;
+
+    border: 1px solid #385271;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.card button:hover {
+    background: #38bdf8;
+    color: #07101d;
+    border-color: #38bdf8;
+}
+
+
+/* ================================
+   TOOL RESULTS
+   ================================ */
+
+.card > div {
+    margin-top: 18px;
+}
+
+.card ul {
+    margin: 10px 0 15px 20px;
+}
+
+.card li {
+    color: #b4c4d8;
+    margin-bottom: 5px;
+}
+
+.card pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    padding: 12px;
+
+    background: #091322;
+    border: 1px solid #304663;
+    border-radius: 6px;
+
+    color: #86efac;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   FILE INPUT
+   ================================ */
+
+.card input[type="file"] {
+    padding: 8px;
+    cursor: pointer;
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer {
+    border-top: 1px solid #26364d;
+
+    text-align: center;
+
+    padding: 28px 20px;
+
+    color: #8193aa;
+
+    font-size: 14px;
+
+    background: #0e1727;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 850px) {
+
+    .highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 520px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: -2px;
+    }
+
+    .hero-text {
+        font-size: 17px;
+    }
+
+    .highlights {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 0 18px;
+    }
+
+    .card button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+}
