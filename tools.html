@@ -77,6 +77,34 @@
 
     <section class="highlights">
 
+        <!-- HTTP SECURITY HEADERS -->
+
+<div class="card">
+
+    <h2>🛡️ HTTP Security Headers</h2>
+
+    <p>
+        Inspect common HTTP security headers and
+        identify whether they are exposed by a target.
+    </p>
+
+    <input
+        type="text"
+        id="securityHeadersURL"
+        placeholder="https://example.com"
+    >
+
+    <button
+        type="button"
+        onclick="analyzeSecurityHeaders()"
+    >
+        Check Headers
+    </button>
+
+    <div id="securityHeadersResult"></div>
+
+</div>
+
 
         <!-- PASSWORD -->
 
@@ -342,6 +370,42 @@
 
     </section>
 
+    <!-- CIDR SUBNET CALCULATOR -->
+
+<div class="card">
+
+    <h2>🌐 CIDR Subnet Calculator</h2>
+
+    <p>
+        Calculate network address, subnet mask,
+        broadcast address and usable host range.
+    </p>
+
+    <input
+        type="text"
+        id="subnetIP"
+        placeholder="IPv4 address e.g. 192.168.1.10"
+    >
+
+    <input
+        type="number"
+        id="subnetCIDR"
+        min="0"
+        max="32"
+        placeholder="CIDR e.g. 24"
+    >
+
+    <button
+        type="button"
+        onclick="calculateSubnet()"
+    >
+        Calculate Subnet
+    </button>
+
+    <div id="subnetResult"></div>
+
+</div>
+
 </main>
 
 
@@ -353,9 +417,9 @@
 
 </footer>
 
-
 <script src="script.js"></script>
 
 </body>
 
 </html>
+

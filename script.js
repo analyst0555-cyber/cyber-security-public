@@ -1330,4 +1330,148 @@ function analyzeLog() {
             </small>
         </p>
     `;
+}   
+
+/* =========================================
+   CIDR SUBNET CALCULATOR
+   ========================================= */
+
+function calculateSubnet() {
+
+    const ipInput = document.getElementById("subnetIP");
+    const cidrInput = document.getElementById("subnetCIDR");
+    const result = document.getElementById("subnetResult");
+
+    if (!ipInput || !cidrInput || !result) {
+        return;
+    }
+
+    const ip = ipInput.value.trim();
+    const cidr = Number(cidrInput.value.trim());
+
+    const octets = ip.split(".");
+
+    if (
+        octets.length !== 4 ||
+        octets.some(
+            octet =>
+                octet === "" ||
+                isNaN(octet) ||
+                Number(octet) < 0 ||
+                Number(octet) > 255
+        )
+    ) {
+        result.innerHTML =
+            "<p>❌ Enter a valid IPv4 address.</p>";
+        return;
+    }
+
+    if (
+        !Number.isInteger(cidr) ||
+        cidr < 0 ||
+        cidr > 32
+    ) {
+        result.innerHTML =
+            "<p>❌ CIDR must be between 0 and 32.</p>";
+        return;
+    }
+
+    const ipNumbers = octets.map(Number);
+
+    const ipValue =
+        ((ipNumbers[0] << 24) >>> 0) |
+        (ipNumbers[1] << 16) |
+        (ipNumbers[2] << 8) |
+        ipNumbers[3];
+
+    const mask =
+        cidr === 0
+            ? 0
+            : (0xFFFFFFFF << (32 - cidr)) >>> 0;
+
+    const network =
+        (ipValue & mask) >>> 0;
+
+    const broadcast =
+        (network | (~mask >>> 0)) >>> 0;
+
+    const toIP = value =>
+        [
+            (value >>> 24) & 255,
+            (value >>> 16) & 255,
+            (value >>> 8) & 255,
+            value & 255
+        ].join(".");
+
+    const networkIP = toIP(network);
+    const broadcastIP = toIP(broadcast);
+
+    const totalAddresses =
+        Math.pow(2, 32 - cidr);
+
+    let usableHosts;
+
+    if (cidr === 32) {
+        usableHosts = 1;
+    } else if (cidr === 31) {
+        usableHosts = 2;
+    } else {
+        usableHosts = Math.max(
+            totalAddresses - 2,
+            0
+        );
+    }
+
+    let firstHost = "N/A";
+    let lastHost = "N/A";
+
+    if (cidr <= 30) {
+        firstHost = toIP(network + 1);
+        lastHost = toIP(broadcast - 1);
+    } else if (cidr === 31) {
+        firstHost = networkIP;
+        lastHost = broadcastIP;
+    } else if (cidr === 32) {
+        firstHost = networkIP;
+        lastHost = networkIP;
+    }
+
+    result.innerHTML = `
+        <h3>🌐 Subnet Information</h3>
+
+        <p>
+            <strong>Network:</strong>
+            ${networkIP}/${cidr}
+        </p>
+
+        <p>
+            <strong>Subnet Mask:</strong>
+            ${toIP(mask)}
+        </p>
+
+        <p>
+            <strong>Broadcast:</strong>
+            ${broadcastIP}
+        </p>
+
+        <p>
+            <strong>First Host:</strong>
+            ${firstHost}
+        </p>
+
+        <p>
+            <strong>Last Host:</strong>
+            ${lastHost}
+        </p>
+
+        <p>
+            <strong>Total Addresses:</strong>
+            ${totalAddresses.toLocaleString()}
+        </p>
+
+        <p>
+            <strong>Usable Hosts:</strong>
+            ${usableHosts.toLocaleString()}
+        </p>
+    `;
 }
